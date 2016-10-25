@@ -18,7 +18,7 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/rlebret/wikipedia-biography-dataset">View on GitHub</a>
 
-          <h1 id="project_title">Wikipedia-biography-dataset</h1>
+          <h1 id="project_title">WikiBio (Wikipedia Biography Dataset)</h1>
           <h2 id="project_tagline">This dataset gathers 728,321 biographies from wikipedia. It aims at evaluating text generation algorithms. For each article, we provide the first paragraph and the infobox (both tokenized). </h2>
 
             <section id="downloads">
@@ -31,11 +31,9 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>
-<a id="wikibio-wikipedia-biography-dataset" class="anchor" href="#wikibio-wikipedia-biography-dataset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WikiBio (wikipedia biography dataset)</h1>
 
-<p>This dataset gathers 728,321 biographies from wikipedia. It aims at evaluating text generation algorithms. For each article, we provide the first paragraph and the infobox (both tokenized). It was used in our
-work,</p>
+<h2>
+<a id="citation-credit" class="anchor" href="#citation-credit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Citation Credit</h2>
 
 <p><strong>Neural Text Generation from Structured Data with Application to the Biography Domain</strong><br>
 Rémi Lebret, David Grangier and Michael Auli, EMNLP 16,<br>
@@ -44,27 +42,40 @@ Rémi Lebret, David Grangier and Michael Auli, EMNLP 16,<br>
 <p>This publication provides further information about the data and we kindly ask
 you to cite this paper when using the data. The data was extracted from the
 English wikipedia dump (enwiki-20150901) relying on the articles refered by
-WikiProject Biography [1].</p>
+<a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Biography">WikiProject Biography</a>.</p>
+
+<pre><code>
+@inproceedings{Lebret_EMNLP2016,
+  author    = {Lebret, R. and Grangier, D. and Auli, M.},
+  title     = {{Neural Text Generation from Structured Data with Application to the Biography Domain }},
+  booktitle = {Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2016}
+}
+</code></pre>
+
+<h2>
+<a id="dataset-description" class="anchor" href="#dataset-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dataset Description</h2>
 
 <p>For each article, we extracted the first paragraph (text), the infobox
 (structured data). Each infobox is encoded as a list of (field name, field
-value) pairs. We used Stanford CoreNLP [2] to preprocess the data, i.e. we
-broke the text into sentences and tokenized both the text and the field
-values. The dataset was randomly split in three subsets train (80%), valid
-(10%), test (10%). We strongly recommend using test only for the final
+value) pairs. We used <a href="http://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a>
+to preprocess the data, i.e. we broke the text into sentences and tokenized
+both the text and the field values. The dataset was randomly split in three subsets
+train (80%), valid (10%), test (10%). We strongly recommend using test only for the final
 evaluation.</p>
 
 <p>The data is organised in three subdirectories for train, valid and test.
 Each directory contains 7 files<br>
-<br>
-SET.id contains the list of wikipedia ids, one article per line.<br>
-SET.url contains the url of the wikipedia articles, one article per line.<br>
-SET.box contains the infobox data, one article per line.<br>
-SET.nb contains the number of sentences per article, one article per line.<br>
-SET.sent contains the sentences, one sentence per line.<br>
-SET.title contains the title of the wikipedia article, one per line.<br>
-SET.contributors contains the url of the wikipedia article history, which list
-the authors of the article.<br></p>
+<ul style="list-style-type:square">
+<li>SET.id contains the list of wikipedia ids, one article per line.</li>
+<li>SET.url contains the url of the wikipedia articles, one article per line.</li>
+<li>SET.box contains the infobox data, one article per line.</li>
+<li>SET.nb contains the number of sentences per article, one article per line.</li>
+<li>SET.sent contains the sentences, one sentence per line.</li>
+<li>SET.title contains the title of the wikipedia article, one per line.</li>
+<li>SET.contributors contains the url of the wikipedia article history, which list
+the authors of the article.</li>
+</ul>
 
 <p>Hence all the file allows to access the information for one article relying
 on line numbers. It is necessary to use SET.nb to split the sentences
@@ -75,18 +86,88 @@ fieldname_position:wordtype. We also indicates when a field is empty or
 contains no readable tokens with fieldname:. For instance the first
 box of the valid set starts with</p>
 
-<p>type_1:pope name_1:michael  name_2:iii      name_3:of
+<pre><code>type_1:pope name_1:michael  name_2:iii      name_3:of
 name_4:alexandria title_1:56th    title_2:pope    title_3:of      title_4:alexandria
 title_5:&amp;       title_6:patriarch       title_7:of      title_8:the
-title_9:see       title_10:of     title_11:st.    title_12:mark   image:</p>
+title_9:see       title_10:of     title_11:st.    title_12:mark   image:</code></pre>
 
 <p>which indicates that the field "type" contains 1 token "pope",
 the field "name" contains 4 tokens "michael iii of alexandria",
 the field "title" contains 12 tokens "56th pope of alexandria &amp;
 patriarch of the see of st. mark", the field "image" is empty.</p>
 
-<p>[1] <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Biography">https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Biography</a><br>
-[2] <a href="http://stanfordnlp.github.io/CoreNLP/">http://stanfordnlp.github.io/CoreNLP/</a></p>
+<h2>
+<a id="dataset-statistics" class="anchor" href="#dataset-statistics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dataset Statistics</h2>
+
+<table>
+<tr>
+<th></th>
+<th>Mean</th>
+<th>Q-5%</th>
+<th>Q-95%</th>
+</tr>
+<tr>
+<td># tokens per sentence</td>
+<td>26.1</td>
+<td>13</td>
+<td>46</td>
+</tr>
+<tr>
+<td># tokens per table</td>
+<td>53.1</td>
+<td>20</td>
+<td>108</td>
+</tr>
+<tr>
+<td># table tokens per sentence</td>
+<td>9.5</td>
+<td>3</td>
+<td>19</td>
+</tr>
+<tr>
+<td># fields per table</td>
+<td>19.7</td>
+<td>9</td>
+<td>36</td>
+</tr>
+</table>
+
+On average, the first sentence is twice as short as
+the table (26.1 vs 53.1 tokens), about a third of the
+sentence tokens (9.5) also occur in the table.
+
+<h2>
+<a id="published-results" class="anchor" href="#published-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Published Results</h2>
+
+<table>
+<tr>
+<th>Publication</th>
+<th>Model</th>
+<th>Perplexity</th>
+<th>BLEU</th>
+<th>ROUGE</th>
+<th>NIST</th>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1603.07771v3.pdf">Lebret et al. (2016)</a></td>
+<td>Template Kneser-Ney</td>
+<td>7.46</td>
+<td>19.8</td>
+<td>10.7</td>
+<td>5.19</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/pdf/1603.07771v3.pdf">Lebret et al. (2016)</a></td>
+<td>Table Neural Language Model</td>
+<td>4.40</td>
+<td>34.7</td>
+<td>25.8</td>
+<td>7.98</td>
+</tr>
+</table>
+
+For neural models we report the mean for five training runs with different initialization.<br>
+Decoding beam width is 5.
 
 <h2>
 <a id="version-information" class="anchor" href="#version-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Version Information</h2>
@@ -102,9 +183,12 @@ patriarch of the see of st. mark", the field "image" is empty.</p>
 <a id="decompressing-zip-files" class="anchor" href="#decompressing-zip-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Decompressing zip files</h2>
 
 <p>We splitted the archive in multiple files. To extract, run<br>
-cat wikipedia-biography-dataset.z?? &gt; tmp.zip<br>
-unzip tmp.zip<br>
-rm tmp.zip<br></p>
+<pre><code>
+cat wikipedia-biography-dataset.z?? &gt; tmp.zip
+unzip tmp.zip
+rm tmp.zip
+</code></pre>
+
       </section>
     </div>
 
@@ -116,7 +200,7 @@ rm tmp.zip<br></p>
       </footer>
     </div>
 
-    
+
 
   </body>
 </html>
