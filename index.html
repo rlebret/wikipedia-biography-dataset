@@ -19,7 +19,7 @@
           <a id="forkme_banner" href="https://github.com/rlebret/wikipedia-biography-dataset">View on GitHub</a>
 
           <h1 id="project_title">WikiBio (Wikipedia Biography Dataset)</h1>
-          <h2 id="project_tagline">This dataset gathers 728,321 biographies from wikipedia. It aims at evaluating text generation algorithms. For each article, we provide the first paragraph and the infobox (both tokenized). </h2>
+          <h2 id="project_tagline">This dataset gathers 728,321 biographies from English Wikipedia. It aims at evaluating text generation algorithms. For each article, we provide the first paragraph and the infobox (both tokenized). </h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/rlebret/wikipedia-biography-dataset/zipball/master">Download this project as a .zip file</a>
@@ -44,8 +44,7 @@ you to cite this paper when using the data. The data was extracted from the
 English wikipedia dump (enwiki-20150901) relying on the articles refered by
 <a href="https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Biography">WikiProject Biography</a>.</p>
 
-<pre><code>
-@inproceedings{Lebret_EMNLP2016,
+<pre><code>@inproceedings{Lebret_EMNLP2016,
   author    = {Lebret, R. and Grangier, D. and Auli, M.},
   title     = {{Neural Text Generation from Structured Data with Application to the Biography Domain }},
   booktitle = {Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
@@ -65,7 +64,7 @@ train (80%), valid (10%), test (10%). We strongly recommend using test only for 
 evaluation.</p>
 
 <p>The data is organised in three subdirectories for train, valid and test.
-Each directory contains 7 files<br>
+Each directory contains 7 files:<br>
 <ul style="list-style-type:square">
 <li>SET.id contains the list of wikipedia ids, one article per line.</li>
 <li>SET.url contains the url of the wikipedia articles, one article per line.</li>
@@ -177,14 +176,13 @@ Decoding beam width is 5.
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
-<p>License information is provided in License.txt</p>
+<p>License information is provided in <a href="https://github.com/rlebret/wikipedia-biography-dataset/blob/master/LICENSE.txt">License.txt</a></p>
 
 <h2>
 <a id="decompressing-zip-files" class="anchor" href="#decompressing-zip-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Decompressing zip files</h2>
 
 <p>We splitted the archive in multiple files. To extract, run<br>
-<pre><code>
-cat wikipedia-biography-dataset.z?? &gt; tmp.zip
+<pre><code>cat wikipedia-biography-dataset.z?? &gt; tmp.zip
 unzip tmp.zip
 rm tmp.zip
 </code></pre>
